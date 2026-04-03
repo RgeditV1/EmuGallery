@@ -16,7 +16,13 @@ const KEY_MAP = {
     '1': 0x1, '2': 0x2, '3': 0x3, '4': 0xC,
     'q': 0x4, 'w': 0x5, 'e': 0x6, 'r': 0xD,
     'a': 0x7, 's': 0x8, 'd': 0x9, 'f': 0xE,
-    'z': 0xA, 'x': 0x0, 'c': 0xB, 'v': 0xF
+    'z': 0xA, 'x': 0x0, 'c': 0xB, 'v': 0xF,
+    // Teclas de dirección y acción para mayor comodidad
+    'arrowup': 0x2,     // Arriba
+    'arrowleft': 0x4,   // Izquierda
+    'arrowright': 0x6,  // Derecha
+    'arrowdown': 0x8,   // Abajo
+    ' ': 0x5            // Barra espaciadora (Suele usarse para disparar en Invaders)
 };
 
 // --- Manejo de Teclado ---
@@ -121,6 +127,33 @@ function initGallery() {
 window.onload = () => {
     try {
         initGallery();
+
+        // Manejador para carga de ROM personalizada
+        const customRomInput = document.getElementById('custom-rom-input');
+        if (customRomInput) {
+            customRomInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                initAudio();
+                if (loopId) cancelAnimationFrame(loopId);
+
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const buffer = event.target.result;
+                    const romData = new Uint8Array(buffer);
+                    cpu.load(romData);
+                    mainLoop();
+                };
+                reader.onerror = () => {
+                    alert('Error al leer el archivo ROM.');
+                };
+                reader.readAsArrayBuffer(file);
+
+                // Limpiar el input para permitir recargar el mismo archivo si se desea
+                e.target.value = '';
+            });
+        }
     } catch (e) {
         alert("Error en inicialización: " + e.message + "\nAsegúrate de haber refrescado la página sin caché (Ctrl+F5).");
     }
