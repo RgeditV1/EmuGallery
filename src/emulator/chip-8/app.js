@@ -93,6 +93,7 @@ function mainLoop() {
 // --- Carga de ROM ---
 async function loadROM(url) {
     initAudio();
+    document.getElementById('no-rom-msg').style.display = 'none';
     if (loopId) cancelAnimationFrame(loopId);
 
     try {
@@ -118,7 +119,11 @@ function initGallery() {
             <h3>${rom.name}</h3>
             <p>${rom.desc}</p>
         `;
-        card.onclick = () => loadROM(rom.file);
+        card.onclick = () => {
+            document.querySelectorAll('.rom-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            loadROM(rom.file);
+        };
         gallery.appendChild(card);
     });
 }

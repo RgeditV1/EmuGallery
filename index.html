@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EmuGallery | CHIP-8 Emulator</title>
+    <title>EmuGallery</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,30 +14,17 @@
 </head>
 
 <body>
-    <h1>EmuGallery</h1>
-
-    <div id="emulator-container">
-        <canvas id="chip8" width="640" height="320"></canvas>
-        <div class="controls-help">
-            Layout de teslas: 1-4, Q-R, A-F, Z-V para el teclado 4x4
+    <div class="landing">
+        <h1>EmuGallery</h1>
+        <p class="landing-desc">Una galería de emuladores clásicos para el navegador.</p>
+        <div class="emulator-list">
+            <a href="chip-8.html" class="emulator-card">
+                <span class="emulator-name">CHIP-8</span>
+                <span class="emulator-year">1977</span>
+                <span class="emulator-enter">Entrar →</span>
+            </a>
         </div>
     </div>
-
-    <div id="rom-gallery-header">
-        <h2>Juegos Disponibles</h2>
-        <div class="custom-rom-upload">
-            <label for="custom-rom-input" class="upload-btn">Cargar ROM Propia</label>
-            <input type="file" id="custom-rom-input" accept=".ch8,.bin" style="display: none;">
-        </div>
-    </div>
-    
-    <div id="rom-gallery">
-        <!-- Las ROMs se cargarán dinámicamente aquí -->
-    </div>
-
-    <script src="src/emulator/chip-8/cpu.js"></script>
-    <script src="src/emulator/chip-8/rom_magnament.js"></script>
-    <script src="src/emulator/chip-8/app.js"></script>
 </body>
 
 </html>

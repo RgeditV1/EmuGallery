@@ -37,6 +37,13 @@ h1 {
     align-items: center;
 }
 
+#no-rom-msg {
+    color: #444;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
 canvas {
     image-rendering: pixelated;
     border: 2px solid #333;
@@ -104,6 +111,11 @@ canvas {
     background: rgba(0, 255, 65, 0.05);
 }
 
+.rom-card.active {
+    border-color: var(--acc-color);
+    background: rgba(0, 255, 65, 0.08);
+}
+
 .rom-card h3 {
     margin: 0 0 10px 0;
     color: #fff;
@@ -122,4 +134,113 @@ canvas {
     background: rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     border-radius: 20px;
+}
+
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 48px;
+    background: rgba(0, 255, 65, 0.04);
+    border-right: 1px solid rgba(0, 255, 65, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    gap: 8px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.emu-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--acc-color);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.emu-year {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: #444;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 16px;
+}
+
+.landing-desc {
+    color: #555;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.emulator-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 320px;
+}
+
+.emulator-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--panel-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.emulator-card:hover {
+    border-color: var(--acc-color);
+    background: rgba(0, 255, 65, 0.05);
+    transform: translateY(-2px);
+}
+
+.emulator-name {
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.emulator-year {
+    color: #444;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+}
+
+.emulator-enter {
+    color: var(--acc-color);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
 }
